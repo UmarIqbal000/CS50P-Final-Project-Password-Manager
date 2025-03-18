@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Password Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1><i class="fas fa-lock"></i> Password Manager</h1>
+        
+        <!-- Password Storage Form -->
+        <div class="card">
+            <h2><i class="fas fa-save"></i> Store Password</h2>
+            <form id="storeForm">
+                <div class="input-group">
+                    <input type="text" id="website" placeholder="Website (e.g., example.com)" required>
+                </div>
+                <div class="input-group">
+                    <input type="text" id="username" placeholder="Username or Email" required>
+                </div>
+                <div class="password-input">
+                    <input type="password" id="password" placeholder="Password" required>
+                    <button type="button" class="toggle-password" title="Toggle Password Visibility">
+                        <i class="fas fa-eye"></i>
+                    </button>
+                </div>
+                <button type="submit"><i class="fas fa-plus"></i> Store Password</button>
+            </form>
+        </div>
+
+        <!-- Password Generator -->
+        <div class="card">
+            <h2><i class="fas fa-key"></i> Generate Password</h2>
+            <div class="generator-options">
+                <label>
+                    <i class="fas fa-text-width"></i> Length:
+                    <input type="number" id="passwordLength" value="12" min="8" max="32">
+                </label>
+                <label>
+                    <input type="checkbox" id="includeNumbers" checked>
+                    <i class="fas fa-hashtag"></i> Include Numbers
+                </label>
+                <label>
+                    <input type="checkbox" id="includeSymbols" checked>
+                    <i class="fas fa-at"></i> Include Symbols
+                </label>
+            </div>
+            <button id="generateBtn"><i class="fas fa-magic"></i> Generate Password</button>
+            <div class="generated-password">
+                <input type="text" id="generatedPassword" readonly placeholder="Generated password will appear here">
+                <button id="copyGenerated"><i class="fas fa-copy"></i> Copy</button>
+                <button id="useGenerated"><i class="fas fa-check"></i> Use</button>
+            </div>
+        </div>
+
+        <!-- Password Retrieval -->
+        <div class="card">
+            <h2><i class="fas fa-search"></i> Retrieve Password</h2>
+            <div class="search-box">
+                <input type="text" id="searchWebsite" placeholder="Search by website name...">
+                <button id="searchBtn"><i class="fas fa-search"></i> Search</button>
+            </div>
+            <div id="searchResults"></div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/script.js') }}"></script>
+</body>
+</html> 
